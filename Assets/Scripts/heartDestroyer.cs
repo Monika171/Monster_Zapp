@@ -1,12 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class trackMove : MonoBehaviour
+public class heartDestroyer : MonoBehaviour
 {
-    public float speed = 1.1f;
-    Vector2 offset;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +13,15 @@ public class trackMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        offset = new Vector2(0, Time.time * speed);
-        GetComponent<Renderer>().material.mainTextureOffset = offset;
         
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+
+        if (col.gameObject.tag == "Enemy Heart")
+        {
+            Destroy(col.gameObject);
+        }
     }
 }
