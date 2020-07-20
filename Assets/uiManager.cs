@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class uiManager : MonoBehaviour
 {
-
+    public Button[] buttons;
     public Text scoreText;
     int score;
     bool gameOver;
@@ -23,7 +23,10 @@ public class uiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score: " + score;       
+        if (SceneManager.GetActiveScene().name!="menuScene")
+        {
+            scoreText.text = "Score: " + score;
+        }
     }
 
     void scoreUpdate()
@@ -37,6 +40,10 @@ public class uiManager : MonoBehaviour
     public void gameOverActivated()
     {
         gameOver = true;
+        foreach(Button button in buttons)
+        {
+            button.gameObject.SetActive(true);
+        }
     }
 
     public void Play()
@@ -46,13 +53,30 @@ public class uiManager : MonoBehaviour
 
     public void Pause()
     {
-        if(Time.timeScale == 1)
+        if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
-        }        
+        }
         else if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }
     }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("menuScene");
+    }
+
+    public void exit()
+    {
+        
+#if UNITY_EDITOR
+        
+         UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
 }
