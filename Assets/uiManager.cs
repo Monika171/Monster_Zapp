@@ -10,6 +10,7 @@ public class uiManager : MonoBehaviour
 {
     public Button[] buttons;
     public Text scoreText;
+    public AudioManager am;
     int score;
     bool gameOver;
     // Start is called before the first frame update
@@ -56,10 +57,12 @@ public class uiManager : MonoBehaviour
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
+            am.monsSound.Stop();
         }
         else if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
+            am.monsSound.Play();
         }
     }
 
