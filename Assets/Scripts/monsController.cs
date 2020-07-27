@@ -23,7 +23,7 @@ public class monsController : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D> ();
 
         #if UNITY_ANDROID
                 currentPlatformAndroid = true;
@@ -52,7 +52,11 @@ public class monsController : MonoBehaviour
     {
         if (currentPlatformAndroid == true)
         {
+            //Uncomment accordingly
+
             TouchMove();
+            
+            //AccelerometerMove();
         }
 
         else
@@ -102,14 +106,32 @@ public class monsController : MonoBehaviour
         }
     }
 
+    void AccelerometerMove()
+    {
+        float x = Input.acceleration.x;
+
+        if (x < -0.1f)
+        {
+            MoveLeft();
+        }
+        else if(x > 0.1f) {
+            MoveRight();
+        }
+
+        else
+        {
+            SetVelocityZero();
+        }
+    }
+
     public void MoveLeft()
     {
-        rb.velocity = new Vector2(-monsSpeed, 0);
+        rb.velocity = new Vector2 (-monsSpeed * 4, 0);
     }
 
     public void MoveRight()
     {
-        rb.velocity = new Vector2 (monsSpeed,0);
+        rb.velocity = new Vector2 (monsSpeed * 4, 0);
     }
 
     public void SetVelocityZero()
