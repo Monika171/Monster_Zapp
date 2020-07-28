@@ -5,6 +5,6 @@
 
 # <img src="https://github.com/Monika171/Monster_Zapp/blob/master/Assets/Sprites/mons-icon.png" width="30"> MONSTER ZAPP
 
-![Demo](https://github.com/Monika171/Monster_Zapp/blob/master/screenshots/mons_zapp.gif | height=200)
+![Demo](https://github.com/Monika171/Monster_Zapp/blob/master/screenshots/mons_zapp.gif){:height="200px"}
 
 <center> <img src="https://github.com/Monika171/Monster_Zapp/blob/master/screenshots/screenshots.png" width=500> </center>
